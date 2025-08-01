@@ -13,6 +13,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run reusable PR script
-        uses: uphar-bhasin-tal/ArchitectGuard/workflow/architect-review.yml@test
+        uses: uphar-bhasin-tal/ArchitectGuard@test
         with:
           some-input: "value" # if needed
