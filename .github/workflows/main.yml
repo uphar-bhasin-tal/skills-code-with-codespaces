@@ -1,0 +1,18 @@
+name: PR Check Using External Action
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  run-external-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run reusable PR script
+        uses: uphar-bhasin-tal/ArchitectGuard@test
+        with:
+          some-input: "value" # if needed
