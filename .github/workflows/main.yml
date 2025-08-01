@@ -1,18 +1,22 @@
-name: PR Check Using External Action
+name: Use ArchLint
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches: [ main ]
 
 jobs:
-  run-external-script:
+  architecture-check:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Run reusable PR script
-        uses: uphar-bhasin-tal/ArchitectGuard/workflow/action.yml@test
+      - name: Use ArchLint
+        uses: yourname/archlint-action@main  # Replace with actual repo
         with:
-          some-input: "value" # if needed
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: architectural_review
+          path: architectural_review.md
