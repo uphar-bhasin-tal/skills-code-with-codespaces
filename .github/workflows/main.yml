@@ -1,0 +1,22 @@
+name: Use ArchLint
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  architecture-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use ArchLint
+        uses: uphar-bhasin-tal/ArchitectGuard@test
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: architectural_review
+          path: architectural_review.md
