@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Use ArchLint
-        uses: yourname/archlint-action@main  # Replace with actual repo
+        uses: uphar-bhasin-tal/ArchitectGuard@test
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
 
